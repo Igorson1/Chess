@@ -106,18 +106,37 @@ public class ChessBoardWithColumnsAndRows {
 
                 chessBoard.add(new JLabel(""));
                 for (int i = 0; i < 8; i++) {
-                    chessBoard.add(
-                            new JLabel(COLS.substring(i, i + 1),
-                                    SwingConstants.CENTER));
+
+                    if(game.currentMove == Piece.Black){
+                        chessBoard.add(
+                                new JLabel(COLS.substring(8 - i - 1, 8 - i),
+                                        SwingConstants.CENTER));
+
+                    } else {
+                        chessBoard.add(
+                                new JLabel(COLS.substring(i, i + 1),
+                                        SwingConstants.CENTER));
+                    }
                 }
                 for (int i = 0; i < 64; i++) {
 
                     switch ((i + 8) % 8) {
                         case 0:
-                            chessBoard.add(new JLabel("" + (8 - (i / 8)),
-                                    SwingConstants.CENTER));
+
+                            if(game.currentMove == Piece.Black){
+                                chessBoard.add(new JLabel("" + ((i / 8) + 1),
+                                        SwingConstants.CENTER));
+                            } else {
+                                chessBoard.add(new JLabel("" + (8 - (i / 8)),
+                                        SwingConstants.CENTER));
+                            }
+
                         default:
-                            chessBoard.add(chessBoardSquares[i]);
+                            if(game.currentMove == Piece.Black){
+                                chessBoard.add(chessBoardSquares[63 - i]);
+                            } else {
+                                chessBoard.add(chessBoardSquares[i]);
+                            }
                     }
                 }
 

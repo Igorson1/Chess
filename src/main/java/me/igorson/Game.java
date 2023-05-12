@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class Game implements Cloneable {
 
-    private int winner, currentMove;
+    int winner, currentMove;
     private ArrayList<int[]> gamePositionHistory = new ArrayList<>();
 
     private Stack<Move> moveHistory = new Stack<>();
